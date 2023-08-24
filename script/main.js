@@ -11,8 +11,8 @@ function addToCart(item, price) {
     const totalPriceId = document.getElementById('price-total');
     let totalPrice = parseFloat(totalPriceId.innerText);
     totalPrice = totalPrice + price;
-    totalPriceId.innerText = totalPrice.toFixed(2);
-    document.getElementById('price-final').innerText = totalPrice.toFixed(2);
+    totalPriceId.innerText = totalPrice.toFixed(2) + ' TK';
+    document.getElementById('price-final').innerText = totalPrice.toFixed(2) + ' TK';
 
 
     // checking coupon eligibility
@@ -29,9 +29,9 @@ const cards = document.getElementsByClassName('card');
 for (const card of cards) {
     card.addEventListener('click', function () {
         card.style.borderColor = '#E527B2';
-        setTimeout(function(){
+        setTimeout(function () {
             card.style.borderColor = 'transparent';
-        },250);
+        }, 250);
         const itemTitle = card.querySelector('.card-title').innerText;
         const itemPrice = parseFloat(card.querySelector('.card-price').innerText);
         addToCart(itemTitle, itemPrice);
@@ -54,17 +54,17 @@ function discount() {
     const discountAmmount = currentPrice * 0.2;
     const couponCode = document.getElementById('coupon-field').value;
     if (couponCode == 'SELL200') {
-        document.getElementById('price-discount').innerText = discountAmmount.toFixed(2);
-        document.getElementById('price-final').innerText = (currentPrice - discountAmmount).toFixed(2);
+        document.getElementById('price-discount').innerText = discountAmmount.toFixed(2) + ' TK';
+        document.getElementById('price-final').innerText = (currentPrice - discountAmmount).toFixed(2) + ' TK';
         document.getElementById('coupon-field').value = '';
     }
 }
 
 // go home reset 
 function resetAll() {
-    document.getElementById('price-discount').innerText = '00.00';
-    document.getElementById('price-final').innerText = '00.00';
-    document.getElementById('price-total').innerText = '00.00';
+    document.getElementById('price-discount').innerText = '00.00 TK';
+    document.getElementById('price-final').innerText = '00.00 TK';
+    document.getElementById('price-total').innerText = '00.00 TK';
     document.getElementById('cart-items').innerHTML = '';
     document.getElementById('purchase-btn').disabled = true;
     document.getElementById('coupon-btn').disabled = true;
